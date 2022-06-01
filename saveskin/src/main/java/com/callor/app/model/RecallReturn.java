@@ -10,6 +10,3 @@ public class RecallReturn {
 	public List<RecallVO> content;
 }
 
-//class RecallChanell {
-//	RecallReturn return;
-//}
