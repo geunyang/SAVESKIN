@@ -45,10 +45,14 @@
                     >${RECALL.productNm}</a>
                 </td>
                 <td>
-                	<a href="${rootPath}/recall/recall_detail">${RECALL. }</a>
+                	<a href="${rootPath}/recall/recall_detail">${RECALL.makr}</a>
                 </td>
-                <td>2222.22.22</td>
-                <td>식품의약품안전처</td>
+                <td>
+                	<a href="${rootPath}/recall/recall_detail">${RECALL.recallPublictBgnde}</a>
+                </td>
+                <td>
+                	<a href="${rootPath}/recall/recall_detail">${RECALL.infoOriginInstt}</a>
+                </td>
               </tr>
               </c:forEach>
             </tbody>

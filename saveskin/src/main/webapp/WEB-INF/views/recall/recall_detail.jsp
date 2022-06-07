@@ -13,50 +13,52 @@
         <h1>리콜 제품 상세</h1>
         <article class="details">
           <h3>리콜대상 상품정보</h3>
+          <c:forEach items="${RECALLS}" var="RECALL">
           <table>
             <tr>
               <th>상품명</th>
-              <td>알리윤울트라리페어로션</td>
+              <td>${RECALL.productNm}</td>
             </tr>
             <tr>
               <th>제조사</th>
-              <td>(주)아모레퍼시픽</td>
+              <td>${RECALL.makr}</td>
             </tr>
             <tr>
               <th>제조연월일</th>
-              <td>22221234</td>
+              <td>${RECALL.mnfcturPd}</td>
             </tr>
             <tr>
               <th>제조번호</th>
-              <td>9999999999</td>
+              <td>${RECALL.mnfcturNoInfo}</td>
             </tr>
           </table>
           <h3>리콜이유</h3>
           <table>
             <tr>
               <th>리콜구분</th>
-              <td>자발적리콜</td>
+              <td>${RECALL.recallSe}</td>
             </tr>
             <tr>
               <th>리콜공표기간</th>
-              <td>22231234</td>
+              <td>${RECALL.recallPublictEndde}</td>
             </tr>
             <tr>
               <th>출처</th>
-              <td>식품의약품안전처</td>
+              <td>${RECALL.infoOriginInstt}</td>
             </tr>
             <tr>
               <th>결함의 내용</th>
-              <td>기능성화장품 주성분 함량 미달 우려</td>
+              <td>${RECALL.shrtcomCn}</td>
             </tr>
           </table>
           <h3>리콜방법</h3>
           <table>
             <tr>
               <th>문의처, 업체주소</th>
-              <td>연락처:</td>
+              <td>${RECALL.recallEntrpsInfo}</td>
             </tr>
           </table>
+          </c:forEach>
         </article>
       </div>
     </section>
