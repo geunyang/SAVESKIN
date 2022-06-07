@@ -1,5 +1,8 @@
 package com.callor.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +19,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JacksonXmlRootElement(localName="content")
 public class RecallVO {
 	private String recallSn;
 	private String productNm;
