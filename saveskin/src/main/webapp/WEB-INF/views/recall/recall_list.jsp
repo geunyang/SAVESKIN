@@ -6,6 +6,7 @@
 <head>
 <%@ include file="/WEB-INF/views/include/include_head.jsp"%>
 <link rel="stylesheet" href="${rootPath}/static/css/recall_list.css?ver=2022-05-28-001">
+<script src="${rootPath}/static/js/recall.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/include_nav.jsp" %>
@@ -24,7 +25,7 @@
           </div>
         </article>
         <article class="post-list">
-          <p><i class="fa-regular fa-file-lines"></i>전체 1000건</p>
+          <p><i class="fa-regular fa-file-lines"></i>${TCOUNT}</p>
           <table>
             <thead>
               <tr>
@@ -36,23 +37,17 @@
               </tr>
             </thead>
             <tbody>
-            <c:forEach items="${RECALLS}" var="RECALL">
+            <c:forEach items="${RECALLS}" var="RECALL" varStatus="INDEX" >
             
-              <tr>
-                <td>1</td>
+              <tr data-recallSn="${RECALL.recallSn}">
+                <td>${INDEX.count}</td>
                 <td>
                   <a href="${rootPath}/recall/recall_detail"
                     >${RECALL.productNm}</a>
                 </td>
-                <td>
-                	<a href="${rootPath}/recall/recall_detail">${RECALL.makr}</a>
-                </td>
-                <td>
-                	<a href="${rootPath}/recall/recall_detail">${RECALL.recallPublictBgnde}</a>
-                </td>
-                <td>
-                	<a href="${rootPath}/recall/recall_detail">${RECALL.infoOriginInstt}</a>
-                </td>
+                <td>${RECALL.makr}</td>
+                <td>${RECALL.recallPublictBgnde}</td>
+                <td>${RECALL.infoOriginInstt}</td>
               </tr>
               </c:forEach>
             </tbody>

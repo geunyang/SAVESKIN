@@ -3,7 +3,6 @@ package com.callor.app.service.impl;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
-import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,9 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.callor.app.config.RecallAPIConfig;
-import com.callor.app.model.RecallChannel;
 import com.callor.app.model.RecallNS;
-import com.callor.app.model.RecallVO;
+import com.callor.app.model.RecallReturn;
 import com.callor.app.service.RecallService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +39,7 @@ public class RecallServiceImplV1 implements RecallService {
 	}
 
 	@Override
-	public List<RecallVO> getRecallList(String queryString) {
+	public RecallReturn getRecallList(String queryString) {
 
 		// RestTemplate를 사용하여 api에 보낼 URI를 생성
 		URI restURI = null;
@@ -69,9 +67,9 @@ public class RecallServiceImplV1 implements RecallService {
 
 			// 실제 데이터가 들어 있는 body만 추출
 			// RecallChannel recallRoot = result.getBody();
-			List<RecallVO> recallList = result.getBody().channel.recallReturn.content;
+//			List<RecallVO> recallList = result.getBody().channel.recallReturn.content;
 //			log.debug(recallRoot.toString());
-			return recallList;
+			return result.getBody().channel.recallReturn;
 
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block

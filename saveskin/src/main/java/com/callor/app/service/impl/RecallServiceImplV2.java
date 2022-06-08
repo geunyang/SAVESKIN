@@ -3,7 +3,6 @@ package com.callor.app.service.impl;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
-import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.callor.app.config.RecallAPIConfig;
-import com.callor.app.model.RecallVO;
+import com.callor.app.model.RecallReturn;
 import com.callor.app.service.RecallService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +40,7 @@ public class RecallServiceImplV2 implements RecallService {
 	}
 
 	@Override
-	public List<RecallVO> getRecallList(String queryString) {
+	public RecallReturn getRecallList(String queryString) {
 
 		// RestTemplate를 사용하여 api에 보낼 URI를 생성
 		URI restURI = null;

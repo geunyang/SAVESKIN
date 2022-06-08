@@ -1,10 +1,8 @@
 package com.callor.app.service;
 
-import java.util.List;
-
-import com.callor.app.model.RecallVO;
+import com.callor.app.model.RecallReturn;
 
 public interface RecallService {
 	public String queryString();
-	public List<RecallVO> getRecallList(String queryString);
+	public RecallReturn getRecallList(String queryString);
 }
