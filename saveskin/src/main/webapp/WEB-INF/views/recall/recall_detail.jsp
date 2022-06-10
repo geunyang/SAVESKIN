@@ -13,7 +13,7 @@
         <h1>리콜 제품 상세</h1>
         <article class="details">
           <h3>리콜대상 상품정보</h3>
-          <c:forEach items="${RECALLS}" var="RECALL">
+<%--           <c:forEach items="${RECALLS}" var="RECALL"> --%>
           <table>
             <tr>
               <th>상품명</th>
@@ -58,7 +58,7 @@
               <td>${RECALL.recallEntrpsInfo}</td>
             </tr>
           </table>
-          </c:forEach>
+<%--           </c:forEach> --%>
         </article>
       </div>
     </section>

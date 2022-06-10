@@ -6,7 +6,6 @@
 <head>
 <%@ include file="/WEB-INF/views/include/include_head.jsp"%>
 <link rel="stylesheet" href="${rootPath}/static/css/recall_list.css?ver=2022-05-28-001">
-<script src="${rootPath}/static/js/recall.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/include_nav.jsp" %>
@@ -26,7 +25,7 @@
         </article>
         <article class="post-list">
           <p><i class="fa-regular fa-file-lines"></i>${TCOUNT}</p>
-          <table>
+          <table class="RECALLS">
             <thead>
               <tr>
                 <th>번호</th>
@@ -39,12 +38,9 @@
             <tbody>
             <c:forEach items="${RECALLS}" var="RECALL" varStatus="INDEX" >
             
-              <tr data-recallSn="${RECALL.recallSn}">
+              <tr data-recallsn="${RECALL.recallSn}">
                 <td>${INDEX.count}</td>
-                <td>
-                  <a href="${rootPath}/recall/recall_detail"
-                    >${RECALL.productNm}</a>
-                </td>
+                <td>${RECALL.productNm}</td>
                 <td>${RECALL.makr}</td>
                 <td>${RECALL.recallPublictBgnde}</td>
                 <td>${RECALL.infoOriginInstt}</td>

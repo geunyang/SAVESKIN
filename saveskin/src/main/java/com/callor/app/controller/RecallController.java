@@ -6,6 +6,7 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,16 +55,36 @@ public class RecallController {
 	}
 
 	// TODO 리콜 리스트 상세
-	@RequestMapping(value = "/recall_detail", method = RequestMethod.GET)
-	public String recall_datail(Locale locale, Model model) {
+//	@RequestMapping(value = "/recall_detail", method = RequestMethod.GET)
+//	public String recall_datail(Locale locale, Model model) {
+//		String queryString = recallService.queryString();
+//		RecallReturn recallReturn = recallService.getRecallList(queryString);
+//		List<RecallVO> recallList = recallReturn.content;
+//
+//		model.addAttribute("RECALLS", recallList);
+//		return "/recall/recall_detail";
+//	}
+
+	
+	@RequestMapping(value="/{recallSn}/recall_detail",method=RequestMethod.GET)
+	public String detail(@PathVariable("recallSn") String recallSn, Model model) {
 		String queryString = recallService.queryString();
 		RecallReturn recallReturn = recallService.getRecallList(queryString);
 		List<RecallVO> recallList = recallReturn.content;
-
-		model.addAttribute("RECALLS", recallList);
+		
+		RecallVO vo = null;
+		for(RecallVO VV : recallList) {
+			if(VV.getRecallSn().equals(recallSn)) {
+				vo = VV;
+				break;
+			}
+			
+		}
+		log.debug("실험결과 : " + vo);
+		model.addAttribute("RECALL", vo);
+		
 		return "/recall/recall_detail";
 	}
-
 	/*
 	 * recallSn 코드를 전달받아 한개의 리콜 정보만 json type 으로 보내기 실패
 	 */

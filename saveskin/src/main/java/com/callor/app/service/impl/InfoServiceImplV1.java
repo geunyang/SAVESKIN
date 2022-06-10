@@ -1,94 +1,73 @@
 package com.callor.app.service.impl;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.callor.app.config.InfoAPIConfig;
+import com.callor.app.model.InfoParent;
 import com.callor.app.model.InfoVO;
 import com.callor.app.service.InfoService;
 
-public class InfoServiceImplV1 implements InfoService{
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class InfoServiceImplV1 implements InfoService {
 
 	@Override
-	public String queryString() {
-		
-		String queryString = InfoAPIConfig.URL;
-		
-		queryString += "?serviceKey=%s";
-		queryString += "&numOfRows=%d";
-		queryString += "&pageNo=%d";
-		queryString += "&type=%s";
-		
-		return String.format(queryString, InfoAPIConfig.SERVICE_KEY,1,10,"json");
-	}
-	
-	public String getJsonString(String queryString) {
-		
-		// java.net.URL 을 import
-		URL url = null;
-		HttpURLConnection httpCon = null;
-		
-		// queryString(URL, 요청정보)를 사용하여
-		// Network 통해서 보낼 데이터로 생성하기
+	public String queryString(String search) {
+
+		StringBuilder urlBuilder = new StringBuilder(InfoAPIConfig.URL);
 		try {
-			url = new URL(queryString);
-			httpCon = (HttpURLConnection) url.openConnection();
-			
-			// get 방식으로 요청(주소창에보이게)
-			httpCon.setRequestMethod("GET");
-			//220609여기까지수정
-			
-			// 문자열 오류 많이나서 변수에 담아버림
-			// httpCon.setRequestProperty("X-Naver-Client_Id", NAVER_CLIENT_ID);			
-			httpCon.setRequestProperty();
-			httpCon.setRequestProperty();
-			
-			// Naver 에게 queryString 정보를 보내고
-			// response 해줄 데이터가 있는지 먼저 확인
-			
-			int resCode = httpCon.getResponseCode();
-			
-			InputStreamReader is = null;
-			BufferedReader buffer = null;
-			
-			// Naver 가 200 코드를 보내면
-			if(resCode == 200) {
-				// 데이터를 받아올 통로를 연결하기
-				is = new InputStreamReader(httpCon.getInputStream());
-			} else {
-				// 만약 200 코드가 아니면
-				// 오류 메세지를 받을 통로를 연결
-				is = new InputStreamReader(httpCon.getErrorStream());
-				
-			}
-			buffer = new BufferedReader(is);
-			
-			String retString = "";
-			while(true) {
-				String line =  buffer.readLine();
-				if(line == null) break;
-				retString += line;
-			}
-			return retString;
-			
-		} catch (MalformedURLException e) {
-			log.debug("Query String 문자열 오류");
-			return null;
-		} catch (IOException e) {
-			log.debug("네트워크 연결을 할 수 없음");
+			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "="+ InfoAPIConfig.SERVICE_KEY);
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); // 한페이지결과수
+			urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); // 페이지번호
+			urlBuilder.append("&" + URLEncoder.encode("entp_name", "UTF-8") + "=" + URLEncoder.encode(search, "UTF-8")); // 업체명
+			urlBuilder.append("&type=json");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return urlBuilder.toString();
+	}
+
+	@Override
+	public List<InfoVO> getInfoList(String queryString) {
+
+		URI restURI = null;
+		log.debug(queryString);
+		try {
+			restURI = new URI(queryString);
+		} catch (URISyntaxException e) {
+			log.debug("URI 문법오류");
 			return null;
 		}
-		
-	}
-	
 
-	@Override
-	public InfoVO getInfoList(String queryString) {
-		
+		/*
+		 * NaverParent 는 List<VO> 타입의 items 변수를 갖는데 여기에서 VO type 을 BookVO 로 확정지어준다
+		 */
+		// 받기
+		RestTemplate restTemp = new RestTemplate();
+
+		ResponseEntity<InfoParent> resData = null;
+		resData = restTemp.exchange(restURI, HttpMethod.GET, null, new ParameterizedTypeReference<InfoParent>() {
+		});
+		log.debug(resData.getBody().items.toString());
+		return resData.getBody().items;
+
+		// naver 에서 받은 데이터는 resData 의 body 에 담겨있다
+		// body 데이터를 get 하여 그 데이터 중에서 items 만 추출하여
+		// Controller 로 return
 
 	}
+
 }
