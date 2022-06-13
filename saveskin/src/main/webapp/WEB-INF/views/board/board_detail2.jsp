@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,33 +8,46 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/include_nav.jsp" %>
-
  <section id="board-in">
- 
       <div id="title1">
-      
+        <ul>
+          <li>
             <div id="nick">
               <img src="${rootPath}/static/image/01.png" />
               <p>닉네임</p>
             </div>
-            
-			    <!-- 제목 title  -->
-			    
-				    <h3>${BOARD.b_title}</h3>
-	  </div>
-				
-				<!-- 내용 content -->
-				<div id="content">
-				     <p>
-				  				  ${BOARD.b_content}
-				     </p>
-				</div>
-       
-      
+            <h3>왜 이 화장품이 또 리콜을......</h3>
+          </li>
+        </ul>
+      </div>
 
+      <div id="content">
+        <ul>
+          <li>
+            <p>
+              키사이트테크놀로지스는 SK하이닉스가 빠른 데이터 속도를 지원하고
+              대규모 데이터를 관리할 수 있는 첨단 제품 설계에 사용되는 메모리
+              반도체 개발 가속화를 위해 키사이트 통합형 PCIe 5.0 테스트 플랫폼을
+              선택했다고 발표했다.<br />
+              SK하이닉스는 차세대 휴대전화, 컴퓨터, 데이터 서버 및 도로 주행
+              차량의 성능 및 용량 요구사항 지원을 목적으로 CXL(Compute Express
+              Link) 기술을 탑재한 메모리 반도체 솔루션을 개발하고 있다. SK
+              하이닉스는 키사이트의 물리 계층 시뮬레이션, PCIe 5.0 디바이스
+              특성화 및 검증을 위한 통합형 솔루션 사용으로 차세대 DRAM 및 CXL
+              고속 메모리 상호연결 기술을 탑재한 PCIe 디바이스의 테스트 및 개발
+              속도를 높일 수 있다.<br />
+              키사이트코리아 이선우 대표는 “키사이트가 엣지 및 클라우드,
+              데이터센터, 5G 디바이스 및 무선 접속망 장비에서 사용하는 고용량 및
+              전력 효율적 메모리 저장 장치의 성능을 검증하는 PCIe 5.0 테스트
+              솔루션을 SK하이닉스에 제공할 수 있게 돼 기쁘다”며 “SK하이닉스는
+              키사이트의 PCIe 테스트 플랫폼을 통해 다양한 4차 산업혁명 부문에
+              배포돼 있는 대역폭 메모리 확장 모듈의 성능을 검증할 수 있다”고
+              전했다.
+            </p>
+          </li>
+        </ul>
+      </div>
 
-	<!-- 댓글 부분 -->
-	
       <div id="comment">
         <ul>
           <li>

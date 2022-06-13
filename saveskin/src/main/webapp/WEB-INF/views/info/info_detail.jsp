@@ -16,39 +16,27 @@
           <table>
             <tr>
               <th>업체명</th>
-              <td>(주)마이진</td>
+              <td>${INFO.ENTP_NAME}</td>
             </tr>
             <tr>
               <th>업종</th>
-              <td>수입품</td>
+              <td>${INFO.INDUTY}</td>
             </tr>
             <tr>
               <th>대표자명</th>
-              <td>전인권</td>
-            </tr>
-            <tr>
-              <th>공장명</th>
-              <td>(주)마이진</td>
-            </tr>
-            <tr>
-              <th>공장전화번호</th>
-              <td>02-000-0000</td>
+              <td>${INFO.BOSS_NAME}</td>
             </tr>
             <tr>
               <th>공장주소</th>
-              <td>서울특별시 강남구 봉은사로 119</td>
-            </tr>
-            <tr>
-              <th>공장일련번호</th>
-              <td>2</td>
+              <td>${INFO.FACTORY_ADDR}</td>
             </tr>
             <tr>
               <th>업체허가번호</th>
-              <td>9999</td>
+              <td>${INFO.ENTP_SEQ}</td>
             </tr>
             <tr>
               <th>업체허가일자</th>
-              <td>2002-08-08</td>
+              <td>${INFO.ENTP_PERMIT_DATE}</td>
             </tr>
           </table>
         </article>

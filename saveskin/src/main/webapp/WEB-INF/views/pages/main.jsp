@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="${rootPath}/static/css/mainpage.css?ver=2022-05-28-001">
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<link rel="stylesheet" href="${rootPath}/static/css/mainpage.css?ver=2022-06-10-006">
 
 <div id="search-background">
       <div id="search">
@@ -19,21 +20,13 @@
           </li>
           <li id="recall-box-wrap">
             <div id="recall-box">
-              <a href="${rootPath}/recall/recall_detail"
-                >1. 이니스프리 리콜</a
-              >
-              <a href="${rootPath}/recall/recall_detail"
-                >2. SK-II 리콜</a
-              >
-              <a href="${rootPath}/recall/recall_detail"
-                >3. 헤라 리콜</a
-              >
-              <a href="${rootPath}/recall/recall_detail"
-                >4. 올리브영 리콜</a
-              >
-              <a href="${rootPath}/recall/recall_detail"
-                >5. 아무거나 리콜</a
-              >
+             <c:forEach items="${RECALLS}" var="RECALL" varStatus="INDEX" >
+            
+              <div data-recallsn="${RECALL.recallSn}">
+              
+                <a>&lt;${INDEX.count}&gt; ${RECALL.productNm}</a>
+              </div>
+              </c:forEach>
             </div>
           </li>
         </ul>

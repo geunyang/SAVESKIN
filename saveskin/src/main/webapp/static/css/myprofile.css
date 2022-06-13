@@ -231,7 +231,25 @@
         width: 25px;
       
       }
-      button{
+      .oBtn{
         z-index: 1000;
+      }
+      
+      .update-user{
+      	padding: 10px 0;
+      	font-size: 16px;
+      	background-color: #ddd;
+      	color: rgb(34,34,34);
+      	border: none;
+      	border-radius:8px;
+      	margin-top:10px;
+      	text-align: center;
+      }
+      
+      .update-user:hover{
+      	color: #fff;
+      	background-color: rgb(118, 201, 65);
+      	font-weight: 900;
+      	
       }
 

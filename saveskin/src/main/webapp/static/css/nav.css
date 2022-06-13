@@ -29,18 +29,18 @@ header nav {
   margin: 0 auto;
 }
 
-#loginwrap {
+.loginwrap {
   padding: 20px 10px 15px 10px;
 }
-#login {
+.login {
   float: right;
   display: flex;
 }
-#login li a {
+.login li a {
   color: #fff;
   font-size: 14px;
 }
-#login li:first-child {
+.login li:first-child {
   padding-right: 20px;
 }
 

@@ -5,7 +5,7 @@
 <head>
 <%@ include file="/WEB-INF/views/include/include_head.jsp"%>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/myprofile.css?ver=2022-05-28-001">
+	href="${rootPath}/static/css/myprofile.css?ver=2022-06-12-002">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_nav.jsp"%>
@@ -13,20 +13,18 @@
 		<div id="profile">
 			<div id="my">
 				<div id="myimg">
-					<img src="${rootPath}/static/image/hodu.jpg" />
+					<img src="${rootPath}/static/image/mypofile/myprofile-icon (1).png" />
 				</div>
 				<div id="id_nick">
 					<div id="nick">
-						<p>
-							<a href="#">호두</a>
-						</p>
+						<i class="fa-regular fa-user icon"></i><p>호두</p>
 					</div>
 					<div id="email">
-						<p>
-							<a href="#">hodu@gmail.com</a>
-						</p>
+						<i class="fa-regular fa-envelope icon"></i><p>hodu@gmail.com</p>
 					</div>
 				</div>
+			
+					<a href="${rootPath}/myprofile/myprofile-update" class="update-user">개인정보 수정하기</a>
 			</div>
 			<div id="mymenu">
 				<ul>
@@ -43,15 +41,11 @@
 		<div id="infor">
 			<div id="myprofile">
 				<ul>
-					<a href="#"><li class="empha">내 프로필</li></a>
-					<a href="#"><li><i
-							class="fa-regular fa-user icon"></i>호두</li></a>
-					<a href="#"><li><i
-							class="fa-solid fa-mobile-screen-button icon"></i>010-1234-1234</li></a>
-					<a href="#"><li><i
-							class="fa-regular fa-envelope icon"></i>hodu@gmail.com</li></a>
-					<a href="#"><li><i
-							class="fa-solid fa-shield-halved icon"></i>비밀번호</li></a>
+					<a href="#"><li class="empha">나의 게시물</li></a>
+					<a href="#"><li>화장품 언제 리콜해봄?</li></a>
+					<a href="#"><li>내 화장품 어때요?</li></a>
+					<a href="#"><li>요즘 20대 화장품 뭐쓰는지 추천해주세요~</li></a>
+					<a href="#"><li>화장품은 화장을 해야해</li></a>
 				</ul>
 			</div>
 			<div id="goods">
@@ -62,11 +56,11 @@
 							<i class="fa-solid fa-plus-minus emphaicon"></i>
 						</button>
 					</li>
-					<li>1234</li>
-					<li>2345</li>
-					<li>3465</li>
-					<li>4567</li>
-					<li>7897</li>
+					<li>숨37 워터풀 타임리프 워터 젤 크림</li>
+					<li>더페이스샵 더테라피 에센셜 토닉 트리트먼트</li>
+					<li>더페이스샵 치아씨드 수분 지킴 에센스 150ml</li>
+					<li>오휘 미라클 모이스처 에센스 50ml</li>
+					<li>숨37 워터풀 타임리프 워터 젤 크림</li>
 				</ul>
 			</div>
 		</div>
@@ -102,6 +96,6 @@
 
 
 	<%@ include file="/WEB-INF/views/include/include_footer.jsp"%>
-	<script src="${rootPath}/static/js/myprofile.js?ver=2022-05-28-001"></script>
+	<script src="${rootPath}/static/js/myprofile.js?ver=2022-06-12-001"></script>
 </body>
 </html>

@@ -11,8 +11,14 @@
 	</select>
 
 	<select id="findById" resultType="UserVO">
+		SELECT * FROM tbl_user WHERE userid = #{userid}
+	</select>
+
+
+	<select id="findByName" resultType="UserVO">
 		SELECT * FROM tbl_user WHERE
-		userid = #{userid}
+		username = #{username}
+
 	</select>
 
 	<insert id="insert" parameterType="UserVO">

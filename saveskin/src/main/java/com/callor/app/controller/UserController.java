@@ -34,27 +34,17 @@ public class UserController {
 	//TODO 로그인 버튼 누를때
 	@RequestMapping(value="/user_login", method=RequestMethod.POST)
 	public String login(UserVO userVO, HttpSession session, Model model) {
-		log.debug(userVO.toString());
+		
 		
 		String loginMessage = null;
 		UserVO loginUserVO = userService.findById(userVO.getUserid());
 		
-		if(loginUserVO == null) {
-			loginMessage = "USER ID FAIL";
-		}else if(!loginUserVO.getPassword().equals(userVO.getPassword())) {
-			loginMessage = "PASSWODR FAIL";
-		}
-		
 		if(loginMessage == null) {
 			session.setAttribute("USER", loginUserVO);
-		}else {
-			session.removeAttribute("USER");
 		}
 		
-		model.addAttribute("LOGIN_MESSAGE", loginMessage);
 		
-		
-		return "user/user_join";
+		return "user/user_login";
 	}
 	
 	
@@ -71,8 +61,28 @@ public class UserController {
 		log.debug("JOIN");
 		log.debug(userVO.toString());
 		userService.join(userVO);
-		return "redirect:/user/user_login";
+		return "/user/user_join_ok";
 	}
+	
+
+	//TODO 회원가입 환영
+	@RequestMapping(value="/user_join_ok", method=RequestMethod.GET)
+	public String join_ok() {
+		
+		return "user/user_join_ok";
+	}
+	
+	//TODO 로그아웃 누를때 
+	@RequestMapping(value="/user_logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.removeAttribute("USER");
+		
+		return "user/user_login";
+	}
+	
+		
+		
+		
 	
 	//TODO ID 중복검사
 	@ResponseBody
@@ -93,7 +103,6 @@ public class UserController {
 	@RequestMapping(value="/namecheck/{username}",method=RequestMethod.GET)
 	public String namecheck(@PathVariable String username) {
 		UserVO userVO = userService.findByName(username);
-		
 		if(userVO == null) {
 			return "OK";
 		}else {

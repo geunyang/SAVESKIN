@@ -5,6 +5,10 @@
 <head>
 <%@ include file="/WEB-INF/views/include/include_head.jsp" %>
 <link rel="stylesheet" href="${rootPath}/static/css/board_list.css?ver=2022-05-28-001">
+<script>
+	const rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/board.js?ver=2022-06-10-002"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/include/include_nav.jsp" %>
@@ -14,6 +18,7 @@
               <ul>
                 <li>
                   <h2>커뮤니티 자유게시판</h2>
+
               </li>
             </ul>
           </div>
@@ -21,7 +26,8 @@
             <p>화장품에 대한 정보를 자유롭게!</p>
           </div>
         </div>
-        <table id="boardtable">
+        
+        <table id="boardtable" class="board">
           <colgroup>
             <col width="15%" />
             <col width="40%" />
@@ -30,83 +36,29 @@
             <col width="15%" />
           </colgroup>
           <tr>
-            <th>번호</th>
+            <th>NO.</th>
             <th>제목</th>
             <th>작성자</th>
             <th>작성일</th>
             <th>조회수</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-            <td>관리자</td>
-            <td>2022.05.10</td>
-            <td>1</td>
-          </tr>
-          <td>10</td>
-          <td><a href="${rootPath}/board/board_detail">커뮤니티 자유게시판</a></td>
-          <td>관리자</td>
-          <td>2022.05.10</td>
-          <td>1</td>
-        </tr>
 
+		<!--
+		서버로 부터 받은 데이터(도서리스트)를 보여주기 위한 부분
+		BOOKS : 서버로부터 받을 데이터
+		BOOK : forEach 를 사용하여 한개의 요소를 추출하여 저장할 변수
+		 -->
+		 <c:forEach items="${board}" var="Con">
+		 <tr data-b_num="${Con.b_num}">
+		 	<td>${Con.b_num}</td>
+		 	<td>${Con.b_title}</td>
+		 	<td>${Con.b_writer}</td>
+		 	<td>${Con.b_date}</td>
+		 	<td>${Con.b_hit}</td>
+		 </tr>
+		 </c:forEach>
       </table>
+      
       <div id="page">
         <ul>
           <a href="#"><li><<</li></a>
