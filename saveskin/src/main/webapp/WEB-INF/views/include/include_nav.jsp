@@ -51,7 +51,7 @@
 			<li><a href="${rootPath}/" class="home"><img id="logo"
 					name="home" src="${rootPath}/static/image/logo.png" /></a></li>
 
-			<li><a href="${rootPath}/recall/recall_list">리콜정보</a></li>
+			<li class="paging"><a href="${rootPath}/recall/recall_list">리콜정보</a></li>
 			<li><a href="${rootPath}/info/info_list">화장품 심사정보</a></li>
 			<li><a href="${rootPath}/board/board_list">커뮤니티</a></li>
 			<li><a href="${rootPath}/myprofile/myprofile">마이페이지</a></li>

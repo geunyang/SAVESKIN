@@ -1,11 +1,9 @@
 package com.callor.app.service;
 
-import java.util.List;
-
-import com.callor.app.model.InfoVO;
+import com.callor.app.model.InfoParent;
 
 public interface InfoService {
 	public String queryString();
-	public List<InfoVO> getInfoList(String queryString);
+	public InfoParent getInfoList(String queryString);
 
 }

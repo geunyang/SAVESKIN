@@ -44,7 +44,7 @@ public class RecallController {
 
 	// TODO 리콜리스트
 	@RequestMapping(value = "/recall_list", method = RequestMethod.GET)
-	public String recall_list(Locale locale, Model model) {
+	public String recall_list(Model model) {
 		String queryString = recallService.queryString();
 		RecallReturn recallReturn = recallService.getRecallList(queryString);
 		List<RecallVO> recallList = recallReturn.content;

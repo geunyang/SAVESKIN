@@ -14,16 +14,16 @@
 		<div class="mainbox">
 			<h1>리콜 제품 리스트</h1>
 			<article class="search">
-				<div>
+				<form method="post">
 					<input type="search" placeholder="어떤 정보를 찾으시나요?" />
 					<button type="submit" id="searchalertStart">
 						<i class="fa-solid fa-magnifying-glass fa-2x" style="color: white"></i>
 					</button>
-				</div>
+				</form>
 			</article>
 			<article class="post-list">
 				<p>
-					<i class="fa-regular fa-file-lines"></i>${TCOUNT}</p>
+					<i class="fa-regular fa-file-lines"></i>전체${TCOUNT}건</p>
 				<table class="RECALLS">
 					<thead>
 						<tr>
