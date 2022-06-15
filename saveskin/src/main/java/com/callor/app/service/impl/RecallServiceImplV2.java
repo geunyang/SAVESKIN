@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RecallServiceImplV2 implements RecallService {
 
 	@Override
-	public String queryString() {
+	public String queryString(int num) {
 
 		String queryString = RecallAPIConfig.URL;
 

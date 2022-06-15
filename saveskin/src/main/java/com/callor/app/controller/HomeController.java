@@ -31,7 +31,7 @@ public class HomeController {
 	//TODO 메인 페이지
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		String queryString = recallService.queryString();
+		String queryString = recallService.queryString(5);
 		RecallReturn recallReturn = recallService.getRecallList(queryString);
 		List<RecallVO> recallList = recallReturn.content;
 

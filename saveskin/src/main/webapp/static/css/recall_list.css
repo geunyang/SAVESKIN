@@ -60,6 +60,10 @@ section h1 {
 .post-list td:not(:nth-of-type(2)) {
   text-align: center;
 }
+.error div {
+	display: inline-block;
+	margin: 0 auto;
+}
 #paging {
   line-height: 36px;
   text-align: center;

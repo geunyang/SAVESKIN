@@ -1,7 +1,7 @@
 package com.callor.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -32,7 +32,7 @@ public class RecallController {
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<RecallVO> home() {
 
-		String queryString = recallService.queryString();
+		String queryString = recallService.queryString(10);
 
 		RecallReturn recallReturn = recallService.getRecallList(queryString);
 		List<RecallVO> recallList = recallReturn.content;
@@ -44,13 +44,39 @@ public class RecallController {
 
 	// TODO 리콜리스트
 	@RequestMapping(value = "/recall_list", method = RequestMethod.GET)
-	public String recall_list(Model model) {
-		String queryString = recallService.queryString();
-		RecallReturn recallReturn = recallService.getRecallList(queryString);
-		List<RecallVO> recallList = recallReturn.content;
+	public String recall_list(String search, Model model) {
+		
+		log.debug("받은 검색어 {}",  search);
+		
+		String queryString10 = recallService.queryString(10);
+		RecallReturn recallReturn10 = recallService.getRecallList(queryString10);
+		List<RecallVO> recallList10 = recallReturn10.content;
 
-		model.addAttribute("RECALLS", recallList);
-		model.addAttribute("TCOUNT", recallReturn.allCnt);
+		model.addAttribute("RECALLS", recallList10);
+		
+		String queryString100 = recallService.queryString(100);
+		RecallReturn recallReturn100 = recallService.getRecallList(queryString100);
+		List<RecallVO> recallList100 = recallReturn100.content;
+//		String text = search;
+		List<RecallVO> searchList = new ArrayList<>();
+		if(search != null) {
+			for(RecallVO vo : recallList100 ) {
+				if(vo.getProductNm().contains(search)) {
+					log.debug("찾았어 {}", vo.getProductNm());
+					searchList.add(vo);
+				} else if(!vo.getProductNm().contains(search)) {
+					log.debug("비었어 {}", vo.getProductNm());
+					
+					model.addAttribute("ERROR","FAIL");
+//				} else if(text.equals("")) {
+//					model.addAttribute("ERROR","NULL");
+				}
+					
+			}
+			model.addAttribute("RECALLS",searchList);
+			
+		}
+		model.addAttribute("TCOUNT", recallReturn100.allCnt);
 		return "/recall/recall_list";
 	}
 
@@ -68,7 +94,7 @@ public class RecallController {
 	
 	@RequestMapping(value="/{recallSn}/recall_detail",method=RequestMethod.GET)
 	public String detail(@PathVariable("recallSn") String recallSn, Model model) {
-		String queryString = recallService.queryString();
+		String queryString = recallService.queryString(10);
 		RecallReturn recallReturn = recallService.getRecallList(queryString);
 		List<RecallVO> recallList = recallReturn.content;
 		

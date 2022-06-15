@@ -24,12 +24,12 @@ import lombok.extern.slf4j.Slf4j;
 public class InfoServiceImplV1 implements InfoService {
 
 	@Override
-	public String queryString() {
+	public String queryString(String num) {
 
 		StringBuilder urlBuilder = new StringBuilder(InfoAPIConfig.URL);
 		try {
 			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "="+ InfoAPIConfig.SERVICE_KEY);
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); // 한페이지결과수
+			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode(num, "UTF-8")); // 한페이지결과수
 			urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); // 페이지번호
 //			urlBuilder.append("&" + URLEncoder.encode("entp_name", "UTF-8") + "=" + URLEncoder.encode("태후", "UTF-8")); // 업체명
 			urlBuilder.append("&type=json");
@@ -42,7 +42,7 @@ public class InfoServiceImplV1 implements InfoService {
 
 	@Override
 	public InfoParent getInfoList(String queryString) {
-
+ 
 		URI restURI = null;
 		log.debug(queryString);
 		try {

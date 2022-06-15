@@ -14,9 +14,9 @@
 		<div class="mainbox">
 			<h1>화장품 제조(판매)업 정보조회</h1>
 			<article class="search">
-				<form method="post">
-					<input type="search" placeholder="어떤 정보를 찾으시나요?" />
-					<button type="submit" id="searchalertStart">
+				<form method="GET">
+					<input type="search" placeholder="어떤 정보를 찾으시나요?" name="search" class="search1"/>
+					<button type="submit" id="searchalertStart" class="info_search">
 						<i class="fa-solid fa-magnifying-glass fa-2x" style="color: white"></i>
 					</button>
 				</form>
@@ -49,14 +49,21 @@
 					</tbody>
 				</table>
 			</article>
+			<c:if test="${ERROR == 'FAIL'}">
+				<div>일치하는 결과가 없습니다</div>
+			</c:if>
+			<c:if test="${ERROR == 'NULL'}">
+				<div>검색어를 입력해주세요</div>
+			</c:if>
 		</div>
 	</section>
 	<div id="paging">
-		<a class="arrow"><i class="fa-solid fa-angles-left"></i></a> 
-		<a class="arrow"><i class="fa-solid fa-angle-left"></i></a> 
-		<a class="on">1</a> <a>2</a> <a>3</a> <a>4</a> <a>5</a> <a>6</a> <a>7</a>
-		<a>8</a> <a>9</a> <a>10</a> <a class="arrow"><i	class="fa-solid fa-angle-right"></i></a> 
-		<a class="arrow"><i	class="fa-solid fa-angles-right"></i></a>
+		<a class="arrow"><i class="fa-solid fa-angles-left"></i></a> <a
+			class="arrow"><i class="fa-solid fa-angle-left"></i></a> <a
+			class="on">1</a> <a>2</a> <a>3</a> <a>4</a> <a>5</a> <a>6</a> <a>7</a>
+		<a>8</a> <a>9</a> <a>10</a> <a class="arrow"><i
+			class="fa-solid fa-angle-right"></i></a> <a class="arrow"><i
+			class="fa-solid fa-angles-right"></i></a>
 	</div>
 
 	<%@ include file="/WEB-INF/views/include/include_footer.jsp"%>
