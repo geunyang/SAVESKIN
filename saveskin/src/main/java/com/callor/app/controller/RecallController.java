@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.app.model.InfoVO;
 import com.callor.app.model.RecallReturn;
 import com.callor.app.model.RecallVO;
 import com.callor.app.service.RecallService;
@@ -57,26 +58,37 @@ public class RecallController {
 		String queryString100 = recallService.queryString(100);
 		RecallReturn recallReturn100 = recallService.getRecallList(queryString100);
 		List<RecallVO> recallList100 = recallReturn100.content;
-//		String text = search;
+
 		List<RecallVO> searchList = new ArrayList<>();
-		if(search != null) {
-			for(RecallVO vo : recallList100 ) {
-				if(vo.getProductNm().contains(search)) {
-					log.debug("찾았어 {}", vo.getProductNm());
+//		if(search != null) {
+//			for(RecallVO vo : recallList100 ) {
+//				if(vo.getProductNm().contains(search)) {
+//					log.debug("찾았어 {}", vo.getProductNm());
+//					searchList.add(vo);
+//				} else if(!vo.getProductNm().contains(search)) {
+//					log.debug("비었어 {}", vo.getProductNm());
+//					
+//					model.addAttribute("ERROR","FAIL");
+//				}
+//					
+//			}
+//			model.addAttribute("RECALLS",searchList);
+//			
+//		}
+		if (search != null) {
+			for (RecallVO vo : recallList100) {
+				if (vo.getProductNm().contains(search)) {
 					searchList.add(vo);
-				} else if(!vo.getProductNm().contains(search)) {
-					log.debug("비었어 {}", vo.getProductNm());
-					
-					model.addAttribute("ERROR","FAIL");
-//				} else if(text.equals("")) {
-//					model.addAttribute("ERROR","NULL");
 				}
-					
 			}
-			model.addAttribute("RECALLS",searchList);
-			
+			if (searchList.size() <1) {
+				model.addAttribute("ERROR","FAIL");
+			}
+			model.addAttribute("RECALLS", searchList);
 		}
+		
 		model.addAttribute("TCOUNT", recallReturn100.allCnt);
+		
 		return "/recall/recall_list";
 	}
 

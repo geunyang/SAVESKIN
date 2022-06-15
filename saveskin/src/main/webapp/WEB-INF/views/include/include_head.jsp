@@ -18,8 +18,8 @@
 <%-- <script src="${rootPath}/static/js/login_join.js?ver=2022-05-28-003"></script> --%>
 <script src="${rootPath}/static/js/sw.js?ver=2022-05-28-003"></script>
 <script src="${rootPath}/static/js/recall.js?ver=2022-06-13-001"></script>
-<script src="${rootPath}/static/js/recallsearch.js?ver=2022-06-15-004"></script>
-<script src="${rootPath}/static/js/infosearch.js?ver=2022-06-15-002"></script>
+<script src="${rootPath}/static/js/recallsearch.js?ver=2022-06-15-006"></script>
+<script src="${rootPath}/static/js/infosearch.js?ver=2022-06-15-007"></script>
 <script src="${rootPath}/static/js/info.js?ver=2022-06-13-004"></script>
 <link rel="stylesheet" href="${rootPath}/static/css/nav.css?ver=2022-06-10-001">
 

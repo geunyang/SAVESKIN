@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const recallsearch_btn = document.querySelector("button.recall_search");
   const recallsearch_input = document.querySelector("input.search1");
+  const recallsearch_form = document.querySelector("form.searchform");
 
   if (recallsearch_btn) {
     recallsearch_btn.addEventListener("click", () => {
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recallsearch_input.focus();
         return false;
       }
+      recallsearch_form.submit();
     });
   }
 });
