@@ -2,13 +2,17 @@ package com.callor.app.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Service;
 
-import com.callor.app.model.BoardListVO;
+import com.callor.app.model.BoardMyVO;
 import com.callor.app.model.BoardVO;
 import com.callor.app.persistance.BoardDao;
 import com.callor.app.service.BoardService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service("boardServiceV1")
 public class BoardServiceImplV1 implements BoardService {
 	
@@ -25,7 +29,7 @@ public class BoardServiceImplV1 implements BoardService {
 	}
 
 	@Override
-	public BoardVO findByNumber(String b_num) {
+	public BoardVO findByNumber(int b_num) {
 		
 		return boardDao.findByNumber(b_num);
 	}
@@ -57,14 +61,21 @@ public class BoardServiceImplV1 implements BoardService {
 
 	@Override
 	public int insert(BoardVO vo) {
-		boardDao.insert(vo);
-		return 0;
+		int ret = boardDao.insert(vo);
+		return ret;
 	}
 
 	@Override
 	public int update(BoardVO vo) {
-		// TODO Auto-generated method stub
+		log.debug(vo.toString());
+		int ret = boardDao.update(vo);
 		return 0;
+	}
+
+	@Override
+	public int deleteByNum(String b_num) {
+		int ret = boardDao.deleteByNum(b_num);
+		return ret;
 	}
 
 	@Override

@@ -5,7 +5,7 @@
 <head>
 <%@ include file="/WEB-INF/views/include/include_head.jsp" %>
 
-<link rel="stylesheet" href="${rootPath}/static/css/join.css?ver=2022-06-12-001">
+<link rel="stylesheet" href="${rootPath}/static/css/join.css?ver=2022-06-16-002">
 <script>
 	const rootPath = "${rootPath}"
 </script>
@@ -53,7 +53,7 @@
                 </select>
               </div>
               <div class="btnbox">
-                <button type="button" class="btn user-update" id="alertStart">
+                <button class="btn user-update" id="alertStart">
                   저장
                 </button>
               </div>
@@ -66,7 +66,7 @@
 
 
 <%@ include file="/WEB-INF/views/include/include_footer.jsp" %>
-<script src="${rootPath}/static/js/user-update.js?ver=2022-06-12-008">
+<script src="${rootPath}/static/js/user-update.js?ver=2022-06-16-001">
 </script>
 </body>
 </html>

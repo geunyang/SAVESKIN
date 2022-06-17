@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const name_check = document.querySelector("button.name-check");
-  const update_btn = document.querySelector("button.user_update");
-  const join_form = document.querySelector("form.user_join");
+  const update_btn = document.querySelector("button.user-update");
+  const join_form = document.querySelector("form.user-update");
 
   const index = {
     username: 0,

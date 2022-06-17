@@ -39,12 +39,14 @@ public class UserController {
 		String loginMessage = null;
 		UserVO loginUserVO = userService.findById(userVO.getUserid());
 		
-		if(loginMessage == null) {
+		if(userVO.getUserid().equals(loginUserVO.getUserid())) {
 			session.setAttribute("USER", loginUserVO);
+		}else if(!userVO.getUserid().equals(loginUserVO.getUserid())) {
+			return "/user/user_join";
 		}
 		
 		
-		return "user/user_login";
+		return "redirect:/";
 	}
 	
 	

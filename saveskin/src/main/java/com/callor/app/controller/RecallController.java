@@ -106,7 +106,9 @@ public class RecallController {
 	
 	@RequestMapping(value="/{recallSn}/recall_detail",method=RequestMethod.GET)
 	public String detail(@PathVariable("recallSn") String recallSn, Model model) {
-		String queryString = recallService.queryString(10);
+		
+		
+		String queryString = recallService.queryString(100);
 		RecallReturn recallReturn = recallService.getRecallList(queryString);
 		List<RecallVO> recallList = recallReturn.content;
 		

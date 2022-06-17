@@ -68,8 +68,12 @@ section h1 {
   text-align: center;
 }
 .error div {
-	display: inline-block;
-	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 42%;
+	left: 50%;
 }
 #paging {
   line-height: 36px;

@@ -40,16 +40,16 @@
 
 	<update id="update" parameterType="UserVO">
 		UPDATE tbl_user SET
-			userid = #{userid}
+			username = #{username},
 			password = #{password},
 			email = #{email},
 			role =#{role}
 
-		WHERE username = #{username}
+		WHERE userid = #{userid}
 	</update>
 	
 	<delete id="delete">
- 		DELETE FROM tbl_user WHERE username = #{username}
+ 		DELETE FROM tbl_user WHERE userid = #{userid}
  	</delete>
 
 </mapper>

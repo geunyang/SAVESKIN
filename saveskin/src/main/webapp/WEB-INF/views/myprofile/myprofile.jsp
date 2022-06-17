@@ -17,10 +17,10 @@
 				</div>
 				<div id="id_nick">
 					<div id="nick">
-						<i class="fa-regular fa-user icon"></i><p>호두</p>
+						<i class="fa-regular fa-user icon"></i><p>${INFO.username}</p>
 					</div>
 					<div id="email">
-						<i class="fa-regular fa-envelope icon"></i><p>hodu@gmail.com</p>
+						<i class="fa-regular fa-envelope icon"></i><p>${INFO.email}</p>
 					</div>
 				</div>
 			

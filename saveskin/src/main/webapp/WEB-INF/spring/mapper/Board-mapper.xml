@@ -17,6 +17,12 @@
 		WHERE b_num = #{b_num}
 	</select>
 
+	<select id="findByWriter" resultType="BoardVO">
+		SELECT * FROM tbl_board
+		WHERE b_writer = #{b_writer}
+		
+	</select>
+	
 	<insert id="insert" parameterType="BoardVO">
 		INSERT INTO tbl_board
 		(
@@ -25,30 +31,31 @@
 			b_hit,
 			b_content,
 			b_writer,
-			b_date
+			b_date,
+			b_time
 		)VALUES(
 		    b_num.NEXTVAL,
 			#{b_title},
 			#{b_hit},
 			#{b_content},
 			#{b_writer},
-			#{b_date}
+			#{b_date},
+			#{b_time}
 		)
 	</insert>
 
 	<update id="update" parameterType="BoardVO">
 		UPDATE tbl_board SET
-			b_num 	  = #{b_num},
 			b_title   = #{b_title},
 			b_hit	  =	#{b_hit},
 			b_content = #{b_content},
 			b_writer  =	#{b_writer},
-			b_date	  =	#{b_date}
-
+			b_date	  =	#{b_date},
+			b_time	  = #{b_time}
 		WHERE b_num = #{b_num}
 	</update>
 	
-	<delete id="delete">
+	<delete id="deleteByNum">
  		DELETE FROM tbl_board WHERE b_num = #{b_num}
  	</delete>
 

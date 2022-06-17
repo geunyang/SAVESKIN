@@ -13,14 +13,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BoardVO {
+public class BoardMyVO {
 
 	public int b_num;			// 게시글 번호
 	public String b_title;		// 제목
-	public String b_content;	// 내용
+	public String username;		// 작성자
+	public String w_date;		// 글 작성일
+	public String w_time;		// 글 작성시간
 	public int b_hit;			// 조회수
-	public String b_writer;		// 작성자   
-	public String b_date;			// 작성일
-	public String b_time;			// 작성 시간
 	
 }
